@@ -102,10 +102,57 @@ const proyectList = [
 
 ]
 
+const ProyectsSubSection = ({ changeView }) => {
+    return <div className='hidden sm:flex row flex-wrap justify-center lg:justify-start'>
+        {
+            proyectList.map((proyect, index) => {
+                return <Button variant="contained" color='secondary' sx={{ fontSize: '0.7rem', height: '30px', paddingInline: '15px', marginRight: '10px', marginBottom: "10px" }} disableElevation>{proyect.name}</Button>
+            })
+        }
+    </div>
+}
+
+const ContactSubSection = ({ changeView }) => {
+    return <div className='hidden sm:flex row flex-wrap justify-center lg:justify-start mt-5'>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="p-6 mr-2 bg-white sm:rounded-lg">
+                <div className="flex items-center text-black">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" className="w-8 h-8 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <div className="ml-4 text-md tracking-wide font-semibold w-60">
+                        Medellin - Antioquia
+                    </div>
+                </div>
+
+                <div className="flex items-center mt-4 text-black">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" className="w-8 h-8 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                        +57 3016236319
+                    </div>
+                </div>
+
+                <div className="flex items-center mt-2 text-black">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" className="w-8 h-8 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                        leideracevedo07@gmail.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
 const ProfilInfo = ({ changeView }) => {
     return <div className='flex row w-full justify-center items-center bg-white sm:h-[800px] p-10 lg:px-20 pb-0 pt-0  sm:max-h-[1080px] pt-10 sm:pt-0'>
         <div className='lg:flex hidden h-full align-center justify-center flex-col flex-1 rounded-lg max-w-[500px]'>
-            <img src="../public/img/img3.png" className='shadowStyle1 w-full object-cover aspect-square' />
+            <img src="/img/img3.png" className='shadowStyle1 w-full object-cover aspect-square' />
         </div>
         <div className='flex max-w-[900px] flex-col gap-5 h-full justify-center lg:pl-20'>
             <span className='text-sm lg:text-3xl font-bold text-center lg:text-left'>Acerca de mi</span>
@@ -130,6 +177,8 @@ const ProfilInfo = ({ changeView }) => {
 }
 
 const HomeContent = () => {
+    const [subsection, setsubsection] = useState(0)
+
     return <div className='flex row w-full justify-center items-center h-screen p-10 lg:px-20 pb-0 pt-0 max-h-[1080px]'>
         <div className='flex w-[750px] flex-col gap-5 h-full justify-center lg:pl-20'>
             <h1 className='font-bold text-2xl -mt-14 mb-14 opacity-30'>Portafolio web</h1>
@@ -147,20 +196,19 @@ const HomeContent = () => {
                     paddingInline: '50px',
                 }}>Informacion personal</Button>
                 <div className='mt-5 mr-5'></div>
-                <Button variant="contained" size='large' disableElevation>Contacto</Button>
+                <Button variant="contained" size='large' disableElevation
+                    onClick={() => { window.location.href = 'https://www.linkedin.com/in/leider-acevedo-985931126/' }}
+                    sx={{
+                        paddingInline: '50px',
+                    }}>Linkedin</Button>
             </div>
 
             <span className='hidden sm:flex text-lg lg:text-2xl font-bold mt-5'>Proyectos:</span>
-            <div className='hidden sm:flex row flex-wrap justify-center lg:justify-start'>
-                {
-                    proyectList.map((proyect, index) => {
-                        return <Button variant="contained" color='secondary' sx={{ fontSize: '0.7rem', height: '30px', paddingInline: '15px', marginRight: '10px', marginBottom: "10px" }} disableElevation>{proyect.name}</Button>
-                    })
-                }
-            </div>
+            <ProyectsSubSection />
+
         </div>
         <div className='lg:flex hidden h-full align-center justify-center flex-col flex-1 rounded-lg'>
-            <img src="../public/img/img2.png" className='w-full object-contain' />
+            <img src="/img/img2.png" className='w-full object-contain' />
         </div>
     </div>
 }
