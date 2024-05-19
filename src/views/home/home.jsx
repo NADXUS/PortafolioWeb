@@ -1,26 +1,105 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import "./home.css"
+import 'swiper/css';
+import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const proyectList = [
-    "PayQubit",
-    "Cologan",
-    "Wisehodler",
-    "Solvy App",
-    "AlexCompu",
-    "BitGreen",
-    "Testing.com",
-    "PeetKeeper",
-    "Soluciones Star",
-    "Match-Fit App",
-    "Gatherin",
-    "Admin Cologan",
-    "Wasapi",
-    "Bot PayQubit",
-    "Bot Cardinal",
-    "PartMiner",
-    "Idaitu",
-    "Bon Naturel",
+    {
+        name: "PayQubit",
+        parraf: "Landing page para la empresa PayQubit",
+        tecnology: ["Angular", "Typescript", "SCSS", "Firebase", "NextJS"]
+    },
+    {
+        name: "Cologan",
+        parraf: "App de compra y venta de ganado online",
+        tecnology: ["Angular", "Javascript", "SCSS", "Mysql", "NodeJS (ExpressJS)"]
+    },
+    {
+        name: "Wisehodler",
+        parraf: "App de gestion para billeteras virtuales",
+        tecnology: ["Angular", "Typescript", "SCSS"]
+    },
+    {
+        name: "Solvy App",
+        parraf: "App de gestion de gruas y soporte mecanico para la empresa Solvy",
+        tecnology: ["React Native", "Typescript", "NextJS"]
+    },
+    {
+        name: "AlexCompu",
+        parraf: "Landing page para la empresa AlexCompu",
+        tecnology: ["React", "Javscript", "CSS"]
+    },
+    {
+        name: "BitGreen",
+        parraf: "Web orientada a la consulta y gestion de consumo energetico en minado de bitcoins",
+        tecnology: ["Angular", "Typescript", "SCSS", "NodeJS (ExpressJS)", "Mysql"]
+    },
+    {
+        name: "Testing.com",
+        parraf: "Web de gestion para la empresa de salud Testing.com",
+        tecnology: ["React", "Javascript", "CSS"]
+    },
+    {
+        name: "PeetKeeper",
+        parraf: "App orientada al cuidado de mascotas",
+        tecnology: ["Ionic (React)", "Typescript", "SCSS", "Firebase"]
+    },
+    {
+        name: "Soluciones Star",
+        parraf: "Landing page para la empresa Soluciones Star",
+        tecnology: ["Angular", "Typescript", "SCSS"]
+    },
+    {
+        name: "Match-Fit App",
+        parraf: "App de fitness con inteligencia artificial para jugadores de soccer",
+        tecnology: ["Ionic (React)", "Typescript", "CSS", "NodeJS (ExpressJS)", "Mysql"]
+    },
+    {
+        name: "Gatherin",
+        parraf: "Landing page para la empresa Gatherin",
+        tecnology: ["React", "Javascript", "SCSS"]
+    },
+    {
+        name: "Admin Cologan",
+        parraf: "Administrador web para la app Colagan de compra y venta de ganado",
+        tecnology: ["Angular", "Typescript", "SCSS", "Firebase"]
+    },
+    {
+        name: "Wasapi",
+        parraf: "Aplicacion orientada a mejorar la experiencia para las empresas al usar whatsapp con api especializadas para la empresa",
+        tecnology: ["React native", "Javascript"]
+    },
+    {
+        name: "Bot PayQubit",
+        parraf: "Bot de gestion diseñado para empresa PayQubit",
+        tecnology: ["NodeJS", "Typescript"]
+    },
+    {
+        name: "Bot Cardinal",
+        parraf: "Bot de gestion diseñado para la escuela Moderna de Conducción",
+        tecnology: ["NodeJS", "Typescript"]
+    },
+    {
+        name: "PartMiner",
+        parraf: "Plataforma web de la empresa PartMiner, empresa dedicada a Ia venta de piezas industriales",
+        tecnology: ["Angular", "Typescript", "SCSS", "NextJS"]
+    },
+    {
+        name: "Idaitu",
+        parraf: "Plataforma web orientada a la agrupacion y propagacion de redes sociales y promocion de eventos",
+        tecnology: ["Angular", "Typescript", "Tailwind"]
+    },
+    {
+        name: "Bon Naturel",
+        parraf: "Tienda de suplementos nutricionales",
+        tecnology: ["Angular", "Typescript", "SCSS", "Firebase"]
+    },
+
 ]
 
 const ProfilInfo = ({ changeView }) => {
@@ -47,7 +126,6 @@ const ProfilInfo = ({ changeView }) => {
                 }}>Descargar CV</Button>
             </div>
         </div>
-
     </div>
 }
 
@@ -76,8 +154,7 @@ const HomeContent = () => {
             <div className='hidden sm:flex row flex-wrap justify-center lg:justify-start'>
                 {
                     proyectList.map((proyect, index) => {
-                        return <Button variant="contained" color='secondary' sx={{ fontSize: '0.7rem', height: '30px', paddingInline: '15px', marginRight: '10px', marginBottom: "10px" }} disableElevation>{proyect}</Button>
-
+                        return <Button variant="contained" color='secondary' sx={{ fontSize: '0.7rem', height: '30px', paddingInline: '15px', marginRight: '10px', marginBottom: "10px" }} disableElevation>{proyect.name}</Button>
                     })
                 }
             </div>
@@ -91,11 +168,13 @@ const HomeContent = () => {
 const Home = () => {
     return <div className='bg-[#f2e8e4]'>
         <div className='max-w-[1920px] m-auto'>
-            <div className='bg-[#f2e8e4] w-screen h-screen max-w-[1920px]'>
+            <div className='bg-[#f2e8e4] w-screen max-w-[1920px]'>
                 <HomeContent />
                 <ProfilInfo />
             </div>
+
         </div>
+
     </div>
 
 }
